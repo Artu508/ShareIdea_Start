@@ -7,14 +7,18 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.edcansummer.databinding.ActivityRegisterBinding;
-import com.example.edcansummer.databinding.ActivityRegisterBindingImpl;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
     private ActivityRegisterBinding binding;
 
     @Override
@@ -45,14 +49,26 @@ public class RegisterActivity extends AppCompatActivity {
         firebaseFirestore
                 .collection("users")
                 .document(email)
-                .set(new UserModel(name, email))
+                .set(new UserModel(name, email, getTime()))
                 .addOnSuccessListener(runnable -> {
                     firebaseAuth
                             .createUserWithEmailAndPassword(email, pw)
                             .addOnSuccessListener(runnable1 -> {
-                                Toast.makeText(this, "정상적으로 가입되었습니다!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText
+                                        (this, "정상적으로 가입되었습니다!",
+                                                Toast.LENGTH_SHORT).show();
                                 finish();
-                            });
-                });
+                            })
+                            .addOnFailureListener
+                                    (e -> Toast.makeText(this,
+                                            e.getLocalizedMessage(), Toast.LENGTH_SHORT).show());
+                })
+                .addOnFailureListener
+                        (e -> Toast.makeText(this, e.getLocalizedMessage(),
+                                Toast.LENGTH_SHORT).show());
+    }
+
+    private String getTime(){
+        return new SimpleDateFormat("yyyy/MM/dd hh:mm aa", Locale.ENGLISH).format(new Date());
     }
 }
