@@ -40,6 +40,10 @@ public class LoginActivity extends AppCompatActivity {
                 .document(email)
                 .get()
                 .addOnSuccessListener(document -> {
+                    if (email.isEmpty() || pw.isEmpty()) {
+                        Toast.makeText(this, "빈칸을 입력해주세요", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     firebaseAuth
                             .signInWithEmailAndPassword(email, pw)
                             .addOnSuccessListener(runnable1 -> {
