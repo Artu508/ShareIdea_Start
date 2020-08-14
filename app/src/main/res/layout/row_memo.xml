@@ -11,7 +11,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:background="@drawable/round_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -20,6 +21,7 @@
         android:padding="24dp">
 
         <TextView
+            android:fontFamily="@font/apple_sd_gothic_neo_r"
             android:id="@+id/txt_row_memo_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,6 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:fontFamily="@font/apple_sd_gothic_neo_r"
             android:id="@+id/txt_row_memo_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

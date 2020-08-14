@@ -22,6 +22,7 @@
         tools:context=".NewMemoActivity">
 
         <androidx.appcompat.widget.Toolbar
+            app:titleTextColor="@color/colorPrimary"
             android:id="@+id/toolbar_new_memo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,15 +30,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            app:title="@{isEdit?`Edit Memo`:`New Memo`, default=`New Memo`}" />
+            app:title="@{isEdit?@string/new_memo_edit:@string/new_memo_upload, default=@string/new_memo_upload}"
+            app:titleTextAppearance="@style/TitleBarTextAppearance" />
 
         <EditText
             android:id="@+id/edit_new_memo"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="16dp"
+            android:background="@drawable/round_box"
+            android:backgroundTint="@color/materialGray1"
+            android:fontFamily="@font/apple_sd_gothic_neo_r"
             android:gravity="start|top"
-            android:hint="Add Memo..."
+            android:hint="@string/new_memo_hint"
+            android:padding="16dp"
             android:text="@={memo}"
             app:layout_constraintBottom_toTopOf="@+id/btn_new_memo_upload"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +55,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@{isEdit?`Edit`:`Upload`, default=`Upload`}"
+            android:background="@drawable/round_box"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/apple_sd_gothic_neo_r"
+            android:text="@{isEdit?@string/new_memo_edit_btn:@string/new_memo_upload_btn, default=@string/new_memo_upload_btn}"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

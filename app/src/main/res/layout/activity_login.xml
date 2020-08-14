@@ -5,9 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="email"
             type="String" />
+
         <variable
             name="pw"
             type="String" />
@@ -17,34 +19,72 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView"
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@id/textview"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/cat" />
+
+        <TextView
+            android:layout_marginBottom="14dp"
+            android:textSize="28sp"
+            android:fontFamily="@font/apple_sd_gothic_neo_h"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDCAN SUMMER PROJECT"
+            app:layout_constraintBottom_toTopOf="@+id/constraint_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@id/textview"
+            android:id="@+id/constraint_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <EditText
-                android:text="@={email}"
                 android:id="@+id/edt_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:background="@drawable/round_box"
+                android:backgroundTint="@color/materialGray1"
+                android:fontFamily="@font/apple_sd_gothic_neo_r"
+                android:hint="이메일"
                 android:inputType="textEmailAddress"
+                android:padding="16dp"
+                android:text="@={email}"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:text="@={pw}"
                 android:id="@+id/edt_login_pw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="Password"
+                android:background="@drawable/round_box"
+                android:backgroundTint="@color/materialGray1"
+                android:fontFamily="@font/apple_sd_gothic_neo_r"
+                android:hint="패스워드"
                 android:inputType="textPassword"
+                android:padding="16dp"
+                android:text="@={pw}"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_login_email" />
@@ -53,7 +93,12 @@
                 android:id="@+id/btn_login_signin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign in"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/round_box"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/apple_sd_gothic_neo_r"
+                android:text="로그인"
+                android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_login_pw" />
@@ -62,7 +107,12 @@
                 android:id="@+id/btn_login_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign up"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/round_box_radus"
+                android:fontFamily="@font/apple_sd_gothic_neo_r"
+                android:text="회원가입"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_login_signin" />
